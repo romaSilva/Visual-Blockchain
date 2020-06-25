@@ -11,6 +11,16 @@ export const StyledSideMenuContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
+  h1 {
+    margin: 40px 0 50px 0;
+    max-width: 200px;
+
+    color: #ffb522;
+    font-size: 40px;
+    font-family: "MuseoModerno", cursive;
+    line-height: 1.2;
+  }
+
   button {
     height: 40px;
     width: 226px;

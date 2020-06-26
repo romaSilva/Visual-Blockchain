@@ -1,16 +1,19 @@
 import React from "react";
-import GlobalStyles from "./styles/GlobalStyles";
-import SideMenu from "./components/SideMenu";
 import Main from "./components/Main";
+import SideMenu from "./components/SideMenu";
+import Store from "./store/Store";
 import { BrowserRouter as Router } from "react-router-dom";
+import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
-    <Router>
-      <SideMenu />
-      <Main />
-      <GlobalStyles />
-    </Router>
+    <Store>
+      <Router>
+        <SideMenu />
+        <Main />
+        <GlobalStyles />
+      </Router>
+    </Store>
   );
 }
 

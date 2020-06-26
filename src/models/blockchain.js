@@ -2,7 +2,7 @@ var SHA256 = require("crypto-js/sha256");
 const EC = require("elliptic").ec;
 const ec = new EC("secp256k1");
 
-class Transaction {
+export class Transaction {
   constructor(fromAddress, toAddress, amount) {
     this.fromAddress = fromAddress;
     this.toAddress = toAddress;
@@ -35,7 +35,7 @@ class Transaction {
   }
 }
 
-class Block {
+export class Block {
   constructor(timestamp, transactions, previousHash = "") {
     this.timestamp = timestamp;
     this.transactions = transactions;
@@ -73,7 +73,7 @@ class Block {
   }
 }
 
-class Blockchain {
+export class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
     this.difficulty = 2;
@@ -82,7 +82,7 @@ class Blockchain {
   }
 
   createGenesisBlock() {
-    return new Block(Date.now(), "Genesis Block", "0");
+    return new Block(Date.now(), "Genesis Block", "None");
   }
 
   getLatestBlock() {
@@ -151,5 +151,5 @@ class Blockchain {
   }
 }
 
-module.exports.Blockchain = Blockchain;
-module.exports.Transaction = Transaction;
+// module.exports.Blockchain = Blockchain;
+// module.exports.Transaction = Transaction;

@@ -1,10 +1,11 @@
 import React from "react";
+import GridHeader from "../GridHeader";
 import { StyledTransactionDetailsContainer } from "./style";
 
 const TransactionDetails = () => {
   return (
     <StyledTransactionDetailsContainer>
-      TransactionDetails
+      <GridHeader title="Transaction Details" />
     </StyledTransactionDetailsContainer>
   );
 };

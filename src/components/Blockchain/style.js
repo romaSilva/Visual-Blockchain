@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // BC => Blocks
-// TT => Transactions
+// TB => Transactions in blocks
 // TD => Transactions details
 
 export const StyledBlockchainContainer = styled.div`

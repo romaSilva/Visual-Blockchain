@@ -14,9 +14,6 @@ const SideMenu = () => {
   return (
     <StyledSideMenuContainer>
       <h1>Visual Blockchain</h1>
-      {/* <GiChainLightning
-        style={{ margin: "40px 0 50px 0", color: "#ffb522", fontSize: "100px" }}
-      /> */}
 
       <Link style={{ textDecoration: "none" }} to={"/blockchain"}>
         <button

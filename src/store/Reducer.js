@@ -5,6 +5,11 @@ export default (state, action) => {
         ...state,
         tab: action.payload,
       };
+    case "SET_SELECTEDBLOCK":
+      return {
+        ...state,
+        selectedBlock: action.payload,
+      };
     case "SET_CRYPTOCURRENCY":
       return {
         ...state,

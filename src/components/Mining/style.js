@@ -21,8 +21,8 @@ export const StyledMiningContainer = styled.div`
 `;
 
 export const StyledMiningItemsContainer = styled.div`
-  margin: 0 21%;
-  width: 58%;
+  margin: 0 20%;
+  width: 60%;
   height: 80%;
 
   display: flex;
@@ -42,4 +42,13 @@ export const StyledMiningItemsContainer = styled.div`
     border-radius: 5px;
     box-sizing: content-box;
   }
+`;
+
+export const StyledButtonContainer = styled.div`
+  padding: 0 60px 0 0;
+  margin: 25px 3% 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;

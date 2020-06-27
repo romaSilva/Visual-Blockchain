@@ -5,12 +5,17 @@ import GlobalContext from "../../store/Context";
 import { ellipseString } from "../../utils/ellipseString";
 
 const Block = () => {
-  const { blockchain, selectedBlock } = useContext(GlobalContext);
+  const { blockchain, selectedBlock, updateSelectedBlock } = useContext(
+    GlobalContext
+  );
 
   return (
     blockchain.length && (
       <StyledBlockContainer>
         <IoIosArrowBack
+          onClick={() => {
+            updateSelectedBlock(selectedBlock - 1);
+          }}
           style={{
             ...iconsStyle,
             visibility: selectedBlock === 0 ? "hidden" : "visible",
@@ -22,9 +27,15 @@ const Block = () => {
             blockchain[selectedBlock].hash,
             30
           )}`}</span>
-          <span>{`Previous Hash: ${blockchain[selectedBlock].previousHash}`}</span>
+          <span>{`Previous Hash: ${ellipseString(
+            blockchain[selectedBlock].previousHash,
+            24
+          )}`}</span>
         </article>
         <IoIosArrowForward
+          onClick={() => {
+            updateSelectedBlock(selectedBlock + 1);
+          }}
           style={{
             ...iconsStyle,
             visibility:

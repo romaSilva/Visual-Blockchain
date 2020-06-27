@@ -42,6 +42,13 @@ const Store = (props) => {
     }
   };
 
+  const updateSelectedBlock = (mySelectedBlock) => {
+    dispatch({
+      type: "SET_SELECTEDBLOCK",
+      payload: mySelectedBlock,
+    });
+  };
+
   const updateLatestBlock = () => {
     if (state.cryptoCurrency) {
       const myLatestBlock = state.cryptoCurrency.getLatestBlock();
@@ -50,6 +57,17 @@ const Store = (props) => {
         type: "SET_LATESTBLOCK",
         payload: myLatestBlock,
       });
+    }
+  };
+
+  const mineNewBlock = () => {
+    state.cryptoCurrency.minePendingTransactions();
+  };
+
+  const getNonce = () => {
+    if (state.cryptoCurrency) {
+      const myLatestBlock = state.cryptoCurrency.getLatestBlock();
+      return myLatestBlock.nonce;
     }
   };
 
@@ -66,6 +84,9 @@ const Store = (props) => {
         updateBlockchain,
         updateLatestBlock,
         updateCryptoCurrency,
+        updateSelectedBlock,
+        mineNewBlock,
+        getNonce,
       }}
     >
       {props.children}

@@ -10,7 +10,6 @@ import { StyledMainContainer } from "./style";
 const Main = () => {
   return (
     <StyledMainContainer>
-      <Header />
       <Switch>
         <Route exact path="/blockchain" component={Blockchain}></Route>
         <Route exact path="/users" component={Users}></Route>

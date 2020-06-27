@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { StyledBlockContainer } from "./style";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import GlobalContext from "../../store/Context";
+import { ellipseString } from "../../utils/ellipseString";
+import { unixToTime } from "../../utils/unixToTime";
 
 const Block = () => {
   const { blockchain, selectedBlock } = useContext(GlobalContext);
@@ -9,13 +11,27 @@ const Block = () => {
   return (
     blockchain.length && (
       <StyledBlockContainer>
-        <IoIosArrowBack style={iconsStyle} />
+        <IoIosArrowBack
+          style={{
+            ...iconsStyle,
+            visibility: selectedBlock === 0 ? "hidden" : "visible",
+          }}
+        />
         <article>
           <span>{`Timestamp: ${blockchain[selectedBlock].timestamp}`}</span>
-          <span>{`Hash: ${blockchain[selectedBlock].hash}`}</span>
+          <span>{`Hash: ${ellipseString(
+            blockchain[selectedBlock].hash,
+            30
+          )}`}</span>
           <span>{`Previous Hash: ${blockchain[selectedBlock].previousHash}`}</span>
         </article>
-        <IoIosArrowForward style={iconsStyle} />
+        <IoIosArrowForward
+          style={{
+            ...iconsStyle,
+            visibility:
+              selectedBlock === blockchain.length - 1 ? "hidden" : "visible",
+          }}
+        />
       </StyledBlockContainer>
     )
   );

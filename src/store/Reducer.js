@@ -5,6 +5,11 @@ export default (state, action) => {
         ...state,
         blockchain: action.payload,
       };
+    case "SET_LATESTBLOCK":
+      return {
+        ...state,
+        latestBlock: action.payload,
+      };
 
     default:
       return state;

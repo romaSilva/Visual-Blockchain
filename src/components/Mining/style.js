@@ -1,0 +1,40 @@
+import styled from "styled-components";
+
+// BC => Blocks
+// TB => Transactions in blocks
+// TD => Transactions details
+
+export const StyledMiningContainer = styled.div`
+  height: 70%;
+  margin: 20px;
+
+  display: grid;
+  grid-template-columns: 48.5% 48.5%;
+  grid-template-rows: 48% 48%;
+  gap: 4% 3%;
+
+  section {
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: #40444b;
+  }
+`;
+
+export const StyledMiningItemsContainer = styled.div`
+  margin: 0 21%;
+  width: 58%;
+  height: 80%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    width: 100%;
+    height: 50px;
+    word-wrap: break-word;
+    font-weight: 300;
+    color: #ffffff;
+    font-size: 16px;
+  }
+`;

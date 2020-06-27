@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledGridHeaderContainer = styled.div`
   height: 22px;
 
-  background-color: #000000;
+  background-color: #2f3136;
   color: white;
 
   display: flex;

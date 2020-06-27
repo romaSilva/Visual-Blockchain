@@ -7,18 +7,31 @@ const Store = (props) => {
   const initialState = {
     blockchain: [],
     selectedBlock: 0,
+    latestBlock: {},
   };
 
   const [state, dispatch] = useReducer(Reducer, initialState);
 
   const updateBlockchain = () => {
-    const myCurrency = new BlockchainClass();
-    const myBlockchain = myCurrency.chain;
+    if (!state.blockchain.length) {
+      const myCurrency = new BlockchainClass();
+      const myBlockchain = myCurrency.chain;
 
-    dispatch({
-      type: "SET_BLOCKCHAIN",
-      payload: myBlockchain,
-    });
+      dispatch({
+        type: "SET_BLOCKCHAIN",
+        payload: myBlockchain,
+      });
+    }
+  };
+
+  const updateLatestBlock = () => {
+    if (state.blockchain.length) {
+      const lateBlock = state.blockchain[state.blockchain.length - 1];
+      dispatch({
+        type: "SET_LATESTBLOCK",
+        payload: lateBlock,
+      });
+    }
   };
 
   return (
@@ -26,7 +39,9 @@ const Store = (props) => {
       value={{
         blockchain: state.blockchain,
         selectedBlock: state.selectedBlock,
+        latestBlock: state.latestBlock,
         updateBlockchain,
+        updateLatestBlock,
       }}
     >
       {props.children}

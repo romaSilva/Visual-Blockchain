@@ -54,13 +54,17 @@ export class Block {
   }
 
   mineBlock(difficulty) {
+    let newBlock = { nonces: [], hashs: [] };
     while (
       this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")
     ) {
       this.nonce++;
       this.hash = this.calculateHash();
+      newBlock.nonces.push(this.nonce);
+      newBlock.hashs.push(this.hash);
     }
     console.log(`Block Mined: ${this.hash}`);
+    return newBlock;
   }
 
   hasValidTransactions() {
@@ -76,7 +80,7 @@ export class Block {
 export class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
-    this.difficulty = 4;
+    this.difficulty = 3;
     this.pendingTransactions = [];
     this.miningReward = 100;
   }
@@ -95,7 +99,7 @@ export class Blockchain {
       this.pendingTransactions,
       this.getLatestBlock().hash
     );
-    block.mineBlock(this.difficulty);
+    const newBlock = block.mineBlock(this.difficulty);
 
     console.log("Block successfully mined");
     this.chain.push(block);
@@ -103,6 +107,8 @@ export class Blockchain {
     this.pendingTransactions = [
       new Transaction(null, miningRewardAddress, this.miningReward),
     ];
+
+    return newBlock;
   }
 
   addTransaction(transaction) {

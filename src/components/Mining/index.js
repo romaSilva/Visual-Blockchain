@@ -46,22 +46,20 @@ const Mining = () => {
         <section>
           <GridHeader title="Nonce" />
           <StyledMiningItemsContainer>
-            <span>{getNonce()}</span>
+            <span id="nonce">0</span>
           </StyledMiningItemsContainer>
         </section>
 
         <section>
           <GridHeader title="Hash" />
           <StyledMiningItemsContainer>
-            <span>
-              sngjsfngjndfsoidfnbfisnbidfbjdfbnsdfkmbhsdjgnbgobmdsfibndfbuinefiub
-            </span>
+            <span id="hash">0</span>
           </StyledMiningItemsContainer>
         </section>
       </StyledMiningContainer>
       <StyledButtonContainer>
         <Button title="Mine!" click={mineNewBlock} />
-        <Button title="Add Block" />
+        <Button title="Cancel" />
       </StyledButtonContainer>
     </>
   ) : null;

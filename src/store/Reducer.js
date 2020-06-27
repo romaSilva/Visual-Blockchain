@@ -25,6 +25,16 @@ export default (state, action) => {
         ...state,
         latestBlock: action.payload,
       };
+    case "SET_NEWBLOCK":
+      return {
+        ...state,
+        newBlock: action.payload,
+      };
+    case "SET_MINEDMODAL":
+      return {
+        ...state,
+        minedModal: action.payload,
+      };
 
     default:
       return state;

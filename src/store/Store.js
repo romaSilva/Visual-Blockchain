@@ -6,11 +6,13 @@ import { Blockchain as BlockchainClass } from "../models/blockchain";
 const Store = (props) => {
   const initialState = {
     tab: "",
+    minedModal: false,
 
     cryptoCurrency: undefined,
     blockchain: [],
     selectedBlock: 0,
     latestBlock: {},
+    newBlock: [],
   };
 
   const [state, dispatch] = useReducer(Reducer, initialState);
@@ -60,33 +62,54 @@ const Store = (props) => {
     }
   };
 
-  const mineNewBlock = () => {
-    state.cryptoCurrency.minePendingTransactions();
+  const updateMinedModal = (bool) => {
+    dispatch({
+      type: "SET_MINEDMODAL",
+      payload: bool,
+    });
   };
 
-  const getNonce = () => {
-    if (state.cryptoCurrency) {
-      const myLatestBlock = state.cryptoCurrency.getLatestBlock();
-      return myLatestBlock.nonce;
+  const mineNewBlock = async () => {
+    const newBlock = await state.cryptoCurrency.minePendingTransactions();
+
+    const myNonce = document.getElementById("nonce");
+    const myHash = document.getElementById("hash");
+
+    for (let i = 0; i < newBlock.nonces.length; i++) {
+      if (i % 10 === 0 || i === newBlock.nonces.length - 1) {
+        setTimeout(() => {
+          myNonce.innerHTML = newBlock.nonces[i];
+          myHash.innerHTML = newBlock.hashs[i];
+        }, i * 2);
+      }
     }
+    const RESTORE_TIME = 2 * newBlock.nonces.length + 1000;
+
+    setTimeout(() => {
+      updateMinedModal(true);
+      myNonce.innerHTML = "0";
+      myHash.innerHTML = "0";
+    }, RESTORE_TIME);
   };
 
   return (
     <GlobalContext.Provider
       value={{
         tab: state.tab,
+        minedModal: state.minedModal,
         updateTab,
 
         cryptoCurrency: state.cryptoCurrency,
         blockchain: state.blockchain,
         selectedBlock: state.selectedBlock,
         latestBlock: state.latestBlock,
+        newBlock: state.newBlock,
+        updateMinedModal,
         updateBlockchain,
         updateLatestBlock,
         updateCryptoCurrency,
         updateSelectedBlock,
         mineNewBlock,
-        getNonce,
       }}
     >
       {props.children}

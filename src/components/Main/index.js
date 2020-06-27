@@ -1,6 +1,5 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import Header from "../Header";
 import Blockchain from "../Blockchain";
 import Users from "../Users";
 import Transactions from "../Transactions";

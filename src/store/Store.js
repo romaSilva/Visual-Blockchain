@@ -5,6 +5,7 @@ import { Blockchain as BlockchainClass } from "../models/blockchain";
 
 const Store = (props) => {
   const initialState = {
+    cryptoCurrency: undefined,
     blockchain: [],
     selectedBlock: 0,
     latestBlock: {},
@@ -12,10 +13,18 @@ const Store = (props) => {
 
   const [state, dispatch] = useReducer(Reducer, initialState);
 
+  const updateCryptoCurrency = () => {
+    const myCurrency = new BlockchainClass();
+
+    dispatch({
+      type: "SET_CRYPTOCURRENCY",
+      payload: myCurrency,
+    });
+  };
+
   const updateBlockchain = () => {
-    if (!state.blockchain.length) {
-      const myCurrency = new BlockchainClass();
-      const myBlockchain = myCurrency.chain;
+    if (state.cryptoCurrency) {
+      const myBlockchain = state.cryptoCurrency.chain;
 
       dispatch({
         type: "SET_BLOCKCHAIN",
@@ -25,11 +34,12 @@ const Store = (props) => {
   };
 
   const updateLatestBlock = () => {
-    if (state.blockchain.length) {
-      const lateBlock = state.blockchain[state.blockchain.length - 1];
+    if (state.cryptoCurrency) {
+      const myLatestBlock = state.cryptoCurrency.getLatestBlock();
+
       dispatch({
         type: "SET_LATESTBLOCK",
-        payload: lateBlock,
+        payload: myLatestBlock,
       });
     }
   };
@@ -37,11 +47,13 @@ const Store = (props) => {
   return (
     <GlobalContext.Provider
       value={{
+        cryptoCurrency: state.cryptoCurrency,
         blockchain: state.blockchain,
         selectedBlock: state.selectedBlock,
         latestBlock: state.latestBlock,
         updateBlockchain,
         updateLatestBlock,
+        updateCryptoCurrency,
       }}
     >
       {props.children}

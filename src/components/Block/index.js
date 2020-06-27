@@ -3,7 +3,6 @@ import { StyledBlockContainer } from "./style";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import GlobalContext from "../../store/Context";
 import { ellipseString } from "../../utils/ellipseString";
-import { unixToTime } from "../../utils/unixToTime";
 
 const Block = () => {
   const { blockchain, selectedBlock } = useContext(GlobalContext);

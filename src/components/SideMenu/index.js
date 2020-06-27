@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { StyledSideMenuContainer } from "./style";
 import { Link } from "react-router-dom";
 import {
@@ -7,9 +7,17 @@ import {
   GiDiamondHard,
   GiWallet,
 } from "react-icons/gi";
+import GlobalContext from "../../store/Context";
 
 const SideMenu = () => {
   const [selectedButton, setSelectedButton] = useState("blockchain");
+
+  const { updateCryptoCurrency } = useContext(GlobalContext);
+
+  useEffect(() => {
+    console.log("SideMenu mounted");
+    updateCryptoCurrency();
+  }, []);
 
   return (
     <StyledSideMenuContainer>

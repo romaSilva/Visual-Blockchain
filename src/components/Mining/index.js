@@ -4,13 +4,18 @@ import { StyledMiningContainer, StyledMiningItemsContainer } from "./style";
 import GlobalContext from "../../store/Context";
 
 const Mining = () => {
-  const { latestBlock, updateLatestBlock } = useContext(GlobalContext);
+  const {
+    cryptoCurrency,
+    blockchain,
+    latestBlock,
+    updateLatestBlock,
+  } = useContext(GlobalContext);
 
   useEffect(() => {
     updateLatestBlock();
-  }, []);
+  }, [cryptoCurrency]);
 
-  return (
+  return blockchain && latestBlock ? (
     <StyledMiningContainer>
       <section>
         <GridHeader title="Latest Hash" />
@@ -18,6 +23,7 @@ const Mining = () => {
           <span>{latestBlock.hash}</span>
         </StyledMiningItemsContainer>
       </section>
+
       <section>
         <GridHeader title="Miner's Wallet" />
         <StyledMiningItemsContainer>
@@ -26,6 +32,7 @@ const Mining = () => {
           </span>
         </StyledMiningItemsContainer>
       </section>
+
       <section>
         <GridHeader title="Nonce" />
         <StyledMiningItemsContainer>
@@ -34,6 +41,7 @@ const Mining = () => {
           </span>
         </StyledMiningItemsContainer>
       </section>
+
       <section>
         <GridHeader title="Hash" />
         <StyledMiningItemsContainer>
@@ -43,7 +51,7 @@ const Mining = () => {
         </StyledMiningItemsContainer>
       </section>
     </StyledMiningContainer>
-  );
+  ) : null;
 };
 
 export default Mining;

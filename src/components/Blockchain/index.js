@@ -6,11 +6,12 @@ import { StyledBlockchainContainer } from "./style";
 import GlobalContext from "../../store/Context";
 
 const Blockchain = () => {
-  const { updateBlockchain } = useContext(GlobalContext);
+  const { cryptoCurrency, updateBlockchain } = useContext(GlobalContext);
 
   useEffect(() => {
+    console.log("Blockchain tab mounted");
     updateBlockchain();
-  }, []);
+  }, [cryptoCurrency]);
 
   return (
     <StyledBlockchainContainer>

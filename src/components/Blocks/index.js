@@ -6,12 +6,13 @@ import { StyledBlocksContainer } from "./style";
 
 const Blocks = () => {
   const { blockchain, selectedBlock } = useContext(GlobalContext);
-  return (
+
+  return blockchain ? (
     <StyledBlocksContainer>
       <GridHeader title={`Block ${selectedBlock + 1}/${blockchain.length}`} />
       <Block />
     </StyledBlocksContainer>
-  );
+  ) : null;
 };
 
 export default Blocks;

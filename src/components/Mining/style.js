@@ -31,10 +31,15 @@ export const StyledMiningItemsContainer = styled.div`
 
   span {
     width: 100%;
-    height: 50px;
+    height: auto;
     word-wrap: break-word;
     font-weight: 300;
     color: #ffffff;
     font-size: 16px;
+    padding: 20px;
+
+    border: 0.8px solid white;
+    border-radius: 5px;
+    box-sizing: content-box;
   }
 `;

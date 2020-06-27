@@ -5,6 +5,7 @@ import GlobalContext from "../../store/Context";
 
 const Mining = () => {
   const {
+    updateTab,
     cryptoCurrency,
     blockchain,
     latestBlock,
@@ -12,10 +13,11 @@ const Mining = () => {
   } = useContext(GlobalContext);
 
   useEffect(() => {
+    updateTab("mining");
     updateLatestBlock();
   }, [cryptoCurrency]);
 
-  return blockchain && latestBlock ? (
+  return blockchain ? (
     <StyledMiningContainer>
       <section>
         <GridHeader title="Latest Hash" />

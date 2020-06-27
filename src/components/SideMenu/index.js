@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { StyledSideMenuContainer } from "./style";
 import { Link } from "react-router-dom";
 import {
@@ -10,9 +10,7 @@ import {
 import GlobalContext from "../../store/Context";
 
 const SideMenu = () => {
-  const [selectedButton, setSelectedButton] = useState("blockchain");
-
-  const { updateCryptoCurrency } = useContext(GlobalContext);
+  const { tab, updateTab, updateCryptoCurrency } = useContext(GlobalContext);
 
   useEffect(() => {
     console.log("SideMenu mounted");
@@ -26,19 +24,19 @@ const SideMenu = () => {
       <Link style={{ textDecoration: "none" }} to={"/blockchain"}>
         <button
           style={{
-            backgroundColor: selectedButton === "blockchain" ? "#393d42" : null,
+            backgroundColor: tab === "blockchain" ? "#393d42" : null,
           }}
-          onClick={() => setSelectedButton("blockchain")}
+          onClick={() => updateTab("blockchain")}
         >
           <GiCrossedChains
             style={{
               ...iconsStyle,
-              color: selectedButton === "blockchain" ? "#ffb522" : null,
+              color: tab === "blockchain" ? "#ffb522" : null,
             }}
           />
           <span
             style={{
-              color: selectedButton === "blockchain" ? "#ffffff" : null,
+              color: tab === "blockchain" ? "#ffffff" : null,
             }}
           >
             Blockchain
@@ -49,19 +47,17 @@ const SideMenu = () => {
       <Link style={{ textDecoration: "none" }} to={"/users"}>
         <button
           style={{
-            backgroundColor: selectedButton === "users" ? "#393d42" : null,
+            backgroundColor: tab === "users" ? "#393d42" : null,
           }}
-          onClick={() => setSelectedButton("users")}
+          onClick={() => updateTab("users")}
         >
           <GiWallet
             style={{
               ...iconsStyle,
-              color: selectedButton === "users" ? "#ffb522" : null,
+              color: tab === "users" ? "#ffb522" : null,
             }}
           />
-          <span
-            style={{ color: selectedButton === "users" ? "#ffffff" : null }}
-          >
+          <span style={{ color: tab === "users" ? "#ffffff" : null }}>
             Users
           </span>
         </button>
@@ -70,20 +66,19 @@ const SideMenu = () => {
       <Link style={{ textDecoration: "none" }} to={"/transactions"}>
         <button
           style={{
-            backgroundColor:
-              selectedButton === "transactions" ? "#393d42" : null,
+            backgroundColor: tab === "transactions" ? "#393d42" : null,
           }}
-          onClick={() => setSelectedButton("transactions")}
+          onClick={() => updateTab("transactions")}
         >
           <GiTakeMyMoney
             style={{
               ...iconsStyle,
-              color: selectedButton === "transactions" ? "#ffb522" : null,
+              color: tab === "transactions" ? "#ffb522" : null,
             }}
           />
           <span
             style={{
-              color: selectedButton === "transactions" ? "#ffffff" : null,
+              color: tab === "transactions" ? "#ffffff" : null,
             }}
           >
             Transactions
@@ -94,19 +89,17 @@ const SideMenu = () => {
       <Link style={{ textDecoration: "none" }} to={"/mining"}>
         <button
           style={{
-            backgroundColor: selectedButton === "mining" ? "#393d42" : null,
+            backgroundColor: tab === "mining" ? "#393d42" : null,
           }}
-          onClick={() => setSelectedButton("mining")}
+          onClick={() => updateTab("mining")}
         >
           <GiDiamondHard
             style={{
               ...iconsStyle,
-              color: selectedButton === "mining" ? "#ffb522" : null,
+              color: tab === "mining" ? "#ffb522" : null,
             }}
           />
-          <span
-            style={{ color: selectedButton === "mining" ? "#ffffff" : null }}
-          >
+          <span style={{ color: tab === "mining" ? "#ffffff" : null }}>
             Mining
           </span>
         </button>

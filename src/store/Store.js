@@ -5,6 +5,8 @@ import { Blockchain as BlockchainClass } from "../models/blockchain";
 
 const Store = (props) => {
   const initialState = {
+    tab: "",
+
     cryptoCurrency: undefined,
     blockchain: [],
     selectedBlock: 0,
@@ -12,6 +14,13 @@ const Store = (props) => {
   };
 
   const [state, dispatch] = useReducer(Reducer, initialState);
+
+  const updateTab = (tab) => {
+    dispatch({
+      type: "SET_TAB",
+      payload: tab,
+    });
+  };
 
   const updateCryptoCurrency = () => {
     const myCurrency = new BlockchainClass();
@@ -47,6 +56,9 @@ const Store = (props) => {
   return (
     <GlobalContext.Provider
       value={{
+        tab: state.tab,
+        updateTab,
+
         cryptoCurrency: state.cryptoCurrency,
         blockchain: state.blockchain,
         selectedBlock: state.selectedBlock,

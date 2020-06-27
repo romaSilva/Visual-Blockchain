@@ -1,5 +1,10 @@
 export default (state, action) => {
   switch (action.type) {
+    case "SET_TAB":
+      return {
+        ...state,
+        tab: action.payload,
+      };
     case "SET_CRYPTOCURRENCY":
       return {
         ...state,

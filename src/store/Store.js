@@ -5,6 +5,7 @@ import { Blockchain as BlockchainClass } from "../models/blockchain";
 
 const Store = (props) => {
   const initialState = {
+    whatIsHappening: "",
     tab: "",
     minedModal: false,
 
@@ -16,6 +17,13 @@ const Store = (props) => {
   };
 
   const [state, dispatch] = useReducer(Reducer, initialState);
+
+  const updateWhatIsHappening = (whatIsHappening) => {
+    dispatch({
+      type: "SET_WHAT",
+      payload: whatIsHappening,
+    });
+  };
 
   const updateTab = (tab) => {
     dispatch({
@@ -94,14 +102,16 @@ const Store = (props) => {
 
     setTimeout(() => {
       updateMinedModal(true);
-      myNonce.innerHTML = "0";
-      myHash.innerHTML = "0";
+      updateWhatIsHappening("");
+      myNonce.innerHTML = "Try a new Nonce";
+      myHash.innerHTML = "Generate a new Hash";
     }, RESTORE_TIME);
   };
 
   return (
     <GlobalContext.Provider
       value={{
+        whatIsHappening: state.whatIsHappening,
         tab: state.tab,
         minedModal: state.minedModal,
         updateTab,
@@ -111,6 +121,7 @@ const Store = (props) => {
         selectedBlock: state.selectedBlock,
         latestBlock: state.latestBlock,
         newBlock: state.newBlock,
+        updateWhatIsHappening,
         updateMinedModal,
         updateBlockchain,
         updateLatestBlock,

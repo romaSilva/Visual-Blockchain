@@ -10,6 +10,8 @@ import GlobalContext from "../../store/Context";
 
 const Mining = () => {
   const {
+    whatIsHappening,
+    updateWhatIsHappening,
     updateTab,
     cryptoCurrency,
     blockchain,
@@ -46,24 +48,33 @@ const Mining = () => {
         <section>
           <GridHeader title="Nonce" />
           <StyledMiningItemsContainer>
-            <span id="nonce">0</span>
+            <span id="nonce">Try a new Nonce</span>
           </StyledMiningItemsContainer>
         </section>
 
         <section>
           <GridHeader title="Hash" />
           <StyledMiningItemsContainer>
-            <span id="hash">0</span>
+            <span id="hash">Generate a new Hash</span>
           </StyledMiningItemsContainer>
         </section>
       </StyledMiningContainer>
       <StyledButtonContainer>
-        <select name="difficulty" id="difficulty" onChange={updateDifficulty}>
+        <select
+          name="difficulty"
+          id="difficulty"
+          onChange={whatIsHappening !== "mining" ? updateDifficulty : null}
+        >
           <option value="2">Easy</option>
           <option value="3">Medium</option>
           <option value="4">Hard</option>
         </select>
-        <Button title="Mine!" click={mineNewBlock} />
+        <Button
+          title="Mine!"
+          mineNewBlock={mineNewBlock}
+          updateWhatIsHappening={updateWhatIsHappening}
+          event="mining"
+        />
       </StyledButtonContainer>
     </>
   ) : null;

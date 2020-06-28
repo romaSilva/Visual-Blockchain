@@ -10,7 +10,9 @@ import {
 import GlobalContext from "../../store/Context";
 
 const SideMenu = () => {
-  const { tab, updateTab, updateCryptoCurrency } = useContext(GlobalContext);
+  const { whatIsHappening, tab, updateTab, updateCryptoCurrency } = useContext(
+    GlobalContext
+  );
 
   useEffect(() => {
     console.log("SideMenu mounted");
@@ -21,12 +23,17 @@ const SideMenu = () => {
     <StyledSideMenuContainer>
       <h1>Visual Blockchain</h1>
 
-      <Link style={{ textDecoration: "none" }} to={"/blockchain"}>
+      <Link
+        style={{ textDecoration: "none" }}
+        to={whatIsHappening !== "mining" && "/blockchain"}
+      >
         <button
           style={{
             backgroundColor: tab === "blockchain" ? "#393d42" : null,
           }}
-          onClick={() => updateTab("blockchain")}
+          onClick={() =>
+            whatIsHappening !== "mining" && updateTab("blockchain")
+          }
         >
           <GiCrossedChains
             style={{
@@ -44,12 +51,15 @@ const SideMenu = () => {
         </button>
       </Link>
 
-      <Link style={{ textDecoration: "none" }} to={"/users"}>
+      <Link
+        style={{ textDecoration: "none" }}
+        to={whatIsHappening !== "mining" && "/users"}
+      >
         <button
           style={{
             backgroundColor: tab === "users" ? "#393d42" : null,
           }}
-          onClick={() => updateTab("users")}
+          onClick={() => whatIsHappening !== "mining" && updateTab("users")}
         >
           <GiWallet
             style={{
@@ -63,12 +73,17 @@ const SideMenu = () => {
         </button>
       </Link>
 
-      <Link style={{ textDecoration: "none" }} to={"/transactions"}>
+      <Link
+        style={{ textDecoration: "none" }}
+        to={whatIsHappening !== "mining" && "/transactions"}
+      >
         <button
           style={{
             backgroundColor: tab === "transactions" ? "#393d42" : null,
           }}
-          onClick={() => updateTab("transactions")}
+          onClick={() =>
+            whatIsHappening !== "mining" && updateTab("transactions")
+          }
         >
           <GiTakeMyMoney
             style={{
@@ -86,12 +101,15 @@ const SideMenu = () => {
         </button>
       </Link>
 
-      <Link style={{ textDecoration: "none" }} to={"/mining"}>
+      <Link
+        style={{ textDecoration: "none" }}
+        to={whatIsHappening !== "mining" && "/mining"}
+      >
         <button
           style={{
             backgroundColor: tab === "mining" ? "#393d42" : null,
           }}
-          onClick={() => updateTab("mining")}
+          onClick={() => whatIsHappening !== "mining" && updateTab("mining")}
         >
           <GiDiamondHard
             style={{

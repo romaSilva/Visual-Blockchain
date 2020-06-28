@@ -1,5 +1,10 @@
 export default (state, action) => {
   switch (action.type) {
+    case "SET_WHAT":
+      return {
+        ...state,
+        whatIsHappening: action.payload,
+      };
     case "SET_TAB":
       return {
         ...state,

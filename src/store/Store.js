@@ -69,6 +69,13 @@ const Store = (props) => {
     });
   };
 
+  const updateDifficulty = (e) => {
+    if (state.cryptoCurrency) {
+      console.log(parseInt(e.target.value));
+      state.cryptoCurrency.setDifficulty(parseInt(e.target.value));
+    }
+  };
+
   const mineNewBlock = async () => {
     const newBlock = await state.cryptoCurrency.minePendingTransactions();
 
@@ -76,14 +83,14 @@ const Store = (props) => {
     const myHash = document.getElementById("hash");
 
     for (let i = 0; i < newBlock.nonces.length; i++) {
-      if (i % 10 === 0 || i === newBlock.nonces.length - 1) {
+      if (i % 20 === 0 || i === newBlock.nonces.length - 1) {
         setTimeout(() => {
           myNonce.innerHTML = newBlock.nonces[i];
           myHash.innerHTML = newBlock.hashs[i];
-        }, i * 2);
+        }, i * 1);
       }
     }
-    const RESTORE_TIME = 2 * newBlock.nonces.length + 1000;
+    const RESTORE_TIME = 1 * newBlock.nonces.length + 500;
 
     setTimeout(() => {
       updateMinedModal(true);
@@ -109,6 +116,7 @@ const Store = (props) => {
         updateLatestBlock,
         updateCryptoCurrency,
         updateSelectedBlock,
+        updateDifficulty,
         mineNewBlock,
       }}
     >

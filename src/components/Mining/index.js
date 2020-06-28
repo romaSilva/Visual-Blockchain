@@ -16,7 +16,7 @@ const Mining = () => {
     latestBlock,
     updateLatestBlock,
     mineNewBlock,
-    getNonce,
+    updateDifficulty,
   } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -58,8 +58,12 @@ const Mining = () => {
         </section>
       </StyledMiningContainer>
       <StyledButtonContainer>
+        <select name="difficulty" id="difficulty" onChange={updateDifficulty}>
+          <option value="2">Easy</option>
+          <option value="3">Medium</option>
+          <option value="4">Hard</option>
+        </select>
         <Button title="Mine!" click={mineNewBlock} />
-        <Button title="Cancel" />
       </StyledButtonContainer>
     </>
   ) : null;

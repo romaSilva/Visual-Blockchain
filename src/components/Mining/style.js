@@ -51,4 +51,19 @@ export const StyledButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+
+  select {
+    margin: 0 10px;
+    width: 100px;
+    background-color: #36393f;
+    outline: none;
+    border: 0.8px solid #ffb522;
+    box-sizing: content-box;
+    padding: 5px;
+    border-radius: 5px;
+    color: #b2b2b2;
+    font-family: "Roboto", serif;
+    height: 20px;
+    --webkit-appearance: none;
+  }
 `;

@@ -80,9 +80,14 @@ export class Block {
 export class Blockchain {
   constructor() {
     this.chain = [this.createGenesisBlock()];
-    this.difficulty = 3;
+    this.difficulty = 2;
     this.pendingTransactions = [];
     this.miningReward = 100;
+  }
+
+  setDifficulty(difficulty) {
+    this.difficulty = difficulty;
+    console.log(`The new diff is: ${this.difficulty}`);
   }
 
   createGenesisBlock() {

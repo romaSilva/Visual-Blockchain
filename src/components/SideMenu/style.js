@@ -27,7 +27,9 @@ export const StyledSideMenuContainer = styled.div`
     margin: 10px 10px;
     border-radius: 6px;
 
-    cursor: pointer;
+    cursor: ${({ whatIsHappening }) =>
+      whatIsHappening === "mining" ? "not-allowed" : "pointer"};
+    background-color: #36393f;
     background-color: #2f3136;
     color: #b2b2b2;
     font-size: 16px;

@@ -40,6 +40,16 @@ export default (state, action) => {
         ...state,
         minedModal: action.payload,
       };
+    case "SET_USERS":
+      return {
+        ...state,
+        users: action.payload,
+      };
+    case "SET_SELECTEDUSER":
+      return {
+        ...state,
+        selectedUser: action.payload,
+      };
 
     default:
       return state;

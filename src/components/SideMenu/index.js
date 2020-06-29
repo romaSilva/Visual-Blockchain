@@ -20,7 +20,7 @@ const SideMenu = () => {
   }, []);
 
   return (
-    <StyledSideMenuContainer>
+    <StyledSideMenuContainer whatIsHappening={whatIsHappening}>
       <h1>Visual Blockchain</h1>
 
       <Link

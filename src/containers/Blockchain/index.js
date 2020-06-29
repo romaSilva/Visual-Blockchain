@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
-import Blocks from "../Blocks";
-import TranscationsInBlock from "../TransactionsInBlock";
-import TransactionDetails from "../TransactionDetails";
+import Blocks from "../../components/Blocks";
+import TranscationsInBlock from "../../components/TransactionsInBlock";
+import TransactionDetails from "../../components/TransactionDetails";
 import { StyledBlockchainContainer } from "./style";
 import GlobalContext from "../../store/Context";
 

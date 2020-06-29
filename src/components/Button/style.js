@@ -7,7 +7,8 @@ export const StyledButton = styled.button`
   padding: 5px;
   height: 20px;
 
-  cursor: pointer;
+  cursor: ${({ whatIsHappening }) =>
+    whatIsHappening === "mining" ? "not-allowed" : "pointer"};
   background-color: #36393f;
   border: 0.8px solid #ffb522;
   border-radius: 5px;

@@ -1,13 +1,19 @@
 import React, { useReducer } from "react";
-import Reducer from "./Reducer";
 import GlobalContext from "./Context";
+import Reducer from "./Reducer";
+import { ec as EC } from "elliptic";
 import { Blockchain as BlockchainClass } from "../models/blockchain";
+
+const ANIMATION_SPEED_MS = 1;
 
 const Store = (props) => {
   const initialState = {
     whatIsHappening: "",
     tab: "",
     minedModal: false,
+
+    users: [],
+    selectedUser: {},
 
     cryptoCurrency: undefined,
     blockchain: [],
@@ -84,6 +90,38 @@ const Store = (props) => {
     }
   };
 
+  const updateUsers = (user) => {
+    if (user) {
+      const ec = new EC("secp256k1");
+      const key = ec.genKeyPair();
+      const publicKey = key.getPublic("hex");
+      const privateKey = key.getPrivate("hex");
+
+      const myNewUser = {
+        nickname: user,
+        key,
+        publicKey,
+        privateKey,
+      };
+
+      const myNewUsers = state.users;
+      myNewUsers.push(myNewUser);
+
+      dispatch({
+        type: "SET_USERS",
+        payload: myNewUsers,
+      });
+    }
+  };
+
+  const updateSelectedUser = (pk) => {
+    const mySelectedUser = state.users.find((user) => user.publicKey === pk);
+    dispatch({
+      type: "SET_SELECTEDUSER",
+      payload: mySelectedUser,
+    });
+  };
+
   const mineNewBlock = async () => {
     const newBlock = await state.cryptoCurrency.minePendingTransactions();
 
@@ -95,10 +133,10 @@ const Store = (props) => {
         setTimeout(() => {
           myNonce.innerHTML = newBlock.nonces[i];
           myHash.innerHTML = newBlock.hashs[i];
-        }, i * 1);
+        }, i * ANIMATION_SPEED_MS);
       }
     }
-    const RESTORE_TIME = 1 * newBlock.nonces.length + 500;
+    const RESTORE_TIME = ANIMATION_SPEED_MS * newBlock.nonces.length + 500;
 
     setTimeout(() => {
       updateMinedModal(true);
@@ -116,11 +154,14 @@ const Store = (props) => {
         minedModal: state.minedModal,
         updateTab,
 
+        users: state.users,
+
         cryptoCurrency: state.cryptoCurrency,
         blockchain: state.blockchain,
         selectedBlock: state.selectedBlock,
         latestBlock: state.latestBlock,
         newBlock: state.newBlock,
+        selectedUser: state.selectedUser,
         updateWhatIsHappening,
         updateMinedModal,
         updateBlockchain,
@@ -128,6 +169,8 @@ const Store = (props) => {
         updateCryptoCurrency,
         updateSelectedBlock,
         updateDifficulty,
+        updateUsers,
+        updateSelectedUser,
         mineNewBlock,
       }}
     >

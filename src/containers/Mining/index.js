@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
-import GridHeader from "../GridHeader";
-import Button from "../Button";
+import GridHeader from "../../components/GridHeader";
+import Button from "../../components/Button";
 import {
   StyledMiningContainer,
   StyledMiningItemsContainer,
@@ -19,6 +19,7 @@ const Mining = () => {
     updateLatestBlock,
     mineNewBlock,
     updateDifficulty,
+    selectedUser,
   } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -37,11 +38,15 @@ const Mining = () => {
         </section>
 
         <section>
-          <GridHeader title="Miner's Wallet" />
+          <GridHeader
+            title={
+              selectedUser.nickname
+                ? `${selectedUser.nickname}'s Public Key`
+                : "Public Key"
+            }
+          />
           <StyledMiningItemsContainer>
-            <span>
-              sngjsfngjndfsoidfnbfisnbidfbjdfbnsdfkmbhsdjgnbgobmdsfibndfbuinefiub
-            </span>
+            <span>{selectedUser.publicKey && selectedUser.publicKey}</span>
           </StyledMiningItemsContainer>
         </section>
 

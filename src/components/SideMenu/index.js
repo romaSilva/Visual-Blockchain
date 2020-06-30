@@ -10,12 +10,17 @@ import {
 import GlobalContext from "../../store/Context";
 
 const SideMenu = () => {
-  const { whatIsHappening, tab, updateTab, updateCryptoCurrency } = useContext(
-    GlobalContext
-  );
+  const {
+    whatIsHappening,
+    tab,
+    updateTab,
+    updateCryptoCurrency,
+    initUsers,
+  } = useContext(GlobalContext);
 
   useEffect(() => {
     console.log("SideMenu mounted");
+    initUsers();
     updateCryptoCurrency();
   }, []);
 

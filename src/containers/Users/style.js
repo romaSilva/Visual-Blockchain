@@ -58,6 +58,10 @@ export const StyledAddUser = styled.article`
     &::placeholder {
       color: #b2b2b2;
     }
+
+    &:focus {
+      border: 0.8px solid #fff;
+    }
   }
 `;
 

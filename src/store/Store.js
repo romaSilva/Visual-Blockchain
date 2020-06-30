@@ -3,6 +3,7 @@ import GlobalContext from "./Context";
 import Reducer from "./Reducer";
 import { ec as EC } from "elliptic";
 import { Blockchain as BlockchainClass } from "../models/blockchain";
+import initialUsers from "../utils/usersInit";
 
 const ANIMATION_SPEED_MS = 1;
 
@@ -23,6 +24,17 @@ const Store = (props) => {
   };
 
   const [state, dispatch] = useReducer(Reducer, initialState);
+
+  const initUsers = () => {
+    dispatch({
+      type: "SET_USERS",
+      payload: initialUsers,
+    });
+    dispatch({
+      type: "SET_SELECTEDUSER",
+      payload: initialUsers[0],
+    });
+  };
 
   const updateWhatIsHappening = (whatIsHappening) => {
     dispatch({
@@ -162,6 +174,7 @@ const Store = (props) => {
         latestBlock: state.latestBlock,
         newBlock: state.newBlock,
         selectedUser: state.selectedUser,
+        initUsers,
         updateWhatIsHappening,
         updateMinedModal,
         updateBlockchain,

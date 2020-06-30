@@ -24,7 +24,7 @@ export const StyledSideMenuContainer = styled.div`
   button {
     height: 40px;
     width: 226px;
-    margin: 10px 10px;
+    margin: 0;
     border-radius: 6px;
 
     cursor: ${({ whatIsHappening }) =>

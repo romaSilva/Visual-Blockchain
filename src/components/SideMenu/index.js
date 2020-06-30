@@ -29,8 +29,8 @@ const SideMenu = () => {
       <h1>Visual Blockchain</h1>
 
       <Link
-        style={{ textDecoration: "none" }}
-        to={whatIsHappening !== "mining" && "/blockchain"}
+        style={{ textDecoration: "none", margin: "10px" }}
+        to={whatIsHappening !== "mining" ? "/blockchain" : "/mining"}
       >
         <button
           style={{
@@ -57,8 +57,11 @@ const SideMenu = () => {
       </Link>
 
       <Link
-        style={{ textDecoration: "none" }}
-        to={whatIsHappening !== "mining" && "/users"}
+        style={{
+          textDecoration: "none",
+          margin: "10px",
+        }}
+        to={whatIsHappening !== "mining" ? "/users" : "/mining"}
       >
         <button
           style={{
@@ -79,8 +82,8 @@ const SideMenu = () => {
       </Link>
 
       <Link
-        style={{ textDecoration: "none" }}
-        to={whatIsHappening !== "mining" && "/transactions"}
+        style={{ textDecoration: "none", margin: "10px" }}
+        to={whatIsHappening !== "mining" ? "/transactions" : "/mining"}
       >
         <button
           style={{
@@ -107,8 +110,8 @@ const SideMenu = () => {
       </Link>
 
       <Link
-        style={{ textDecoration: "none" }}
-        to={whatIsHappening !== "mining" && "/mining"}
+        style={{ textDecoration: "none", margin: "10px" }}
+        to={whatIsHappening !== "mining" ? "/mining" : "/mining"}
       >
         <button
           style={{

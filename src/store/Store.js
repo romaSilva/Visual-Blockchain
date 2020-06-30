@@ -135,7 +135,9 @@ const Store = (props) => {
   };
 
   const mineNewBlock = async () => {
-    const newBlock = await state.cryptoCurrency.minePendingTransactions();
+    const newBlock = await state.cryptoCurrency.minePendingTransactions(
+      state.selectedUser.publicKey
+    );
 
     const myNonce = document.getElementById("nonce");
     const myHash = document.getElementById("hash");

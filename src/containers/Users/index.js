@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import GlobalContext from "../../store/Context";
 import Button from "../../components/Button";
 import GridHeader from "../../components/GridHeader";
@@ -10,11 +10,20 @@ import {
 } from "./style";
 
 const Users = () => {
-  const { users, selectedUser, updateUsers, updateSelectedUser } = useContext(
-    GlobalContext
-  );
+  const {
+    cryptoCurrency,
+    users,
+    selectedUser,
+    updateUsers,
+    updateSelectedUser,
+    updateTab,
+  } = useContext(GlobalContext);
 
   const [input, setInput] = useState("");
+
+  useEffect(() => {
+    updateTab("users");
+  }, []);
 
   return (
     <StyledUsersContainer>
@@ -64,7 +73,11 @@ const Users = () => {
           </section>
           <section>
             <span>{selectedUser.nickname ? "Balance" : ""}</span>
-            <span>{selectedUser.nickname ? "0" : ""}</span>
+            <span>
+              {selectedUser.nickname
+                ? cryptoCurrency.getBalanceofAddress(selectedUser.publicKey)
+                : ""}
+            </span>
           </section>
         </StyledDetails>
       </section>

@@ -4,6 +4,7 @@ import Reducer from "./Reducer";
 import { ec as EC } from "elliptic";
 import { Blockchain as BlockchainClass } from "../models/blockchain";
 import initialUsers from "../utils/usersInit";
+import { Transaction as TransactionClass } from "../models/blockchain";
 
 const ANIMATION_SPEED_MS = 1;
 
@@ -97,7 +98,6 @@ const Store = (props) => {
 
   const updateDifficulty = (e) => {
     if (state.cryptoCurrency) {
-      console.log(parseInt(e.target.value));
       state.cryptoCurrency.setDifficulty(parseInt(e.target.value));
     }
   };
@@ -132,6 +132,25 @@ const Store = (props) => {
       type: "SET_SELECTEDUSER",
       payload: mySelectedUser,
     });
+  };
+
+  const updatePendingTx = (arg) => {
+    if (arg.toAddress !== "0" && arg.amount > 0) {
+      const myTx = new TransactionClass(
+        arg.fromAddress,
+        arg.toAddress,
+        parseFloat(arg.amount)
+      );
+      myTx.signTransaction(state.selectedUser.key);
+      if (state.cryptoCurrency) {
+        const myCurrency = state.cryptoCurrency;
+        myCurrency.addTransaction(myTx);
+        dispatch({
+          type: "SET_CRYPTOCURRENCY",
+          payload: myCurrency,
+        });
+      }
+    }
   };
 
   const mineNewBlock = async () => {
@@ -186,6 +205,7 @@ const Store = (props) => {
         updateDifficulty,
         updateUsers,
         updateSelectedUser,
+        updatePendingTx,
         mineNewBlock,
       }}
     >

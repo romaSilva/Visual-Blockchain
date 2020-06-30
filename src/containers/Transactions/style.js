@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledTransactionsContainer = styled.div`
-  height: 75%;
-  margin: 30px 30px 0;
+  height: 90%;
+  margin: 10px 10px 0;
 
   section {
     background-color: #40444b;
@@ -16,7 +16,7 @@ export const StyledTransactionsContainer = styled.div`
   }
 
   .PT {
-    height: 300px;
+    height: 400px;
   }
 `;
 
@@ -74,6 +74,32 @@ export const StyledAddTx = styled.div`
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
+    }
+  }
+`;
+
+export const StyledPendingTx = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 80%;
+
+  article {
+    color: #fff;
+    font-weight: 300;
+    border-bottom: 0.8px solid white;
+    width: 95%;
+    padding: 5px;
+
+    display: flex;
+    justify-content: space-between;
+
+    &:last-child {
+      border: none;
+    }
+
+    span {
+      margin: 10px 20px;
     }
   }
 `;

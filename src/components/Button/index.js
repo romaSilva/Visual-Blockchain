@@ -10,6 +10,8 @@ const Button = ({
   updateUsers,
   user,
   setInput,
+  updatePendingTx,
+  newTx,
 }) => {
   const { whatIsHappening } = useContext(GlobalContext);
 
@@ -25,6 +27,10 @@ const Button = ({
           if (updateUsers) {
             updateUsers(user);
             setInput("");
+          }
+
+          if (updatePendingTx) {
+            updatePendingTx(newTx);
           }
         }
       }}

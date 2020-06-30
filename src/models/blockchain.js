@@ -7,17 +7,19 @@ export class Transaction {
     this.fromAddress = fromAddress;
     this.toAddress = toAddress;
     this.amount = amount;
+    this.timestamp = Date.now();
   }
 
   calculateHash() {
-    return SHA256(this.fromAddress + this.toAddress + this.amount).toString();
+    return SHA256(
+      this.fromAddress + this.toAddress + this.amount + this.timestamp
+    ).toString();
   }
 
   signTransaction(signingKey) {
     if (signingKey.getPublic("hex") !== this.fromAddress) {
       throw new Error("You cannot sign transactions for other wallets!");
     }
-
     const hashTx = this.calculateHash();
     const sig = signingKey.sign(hashTx, "base64");
     this.signature = sig.toDER("hex");
@@ -110,7 +112,11 @@ export class Blockchain {
     this.chain.push(block);
 
     this.pendingTransactions = [
-      new Transaction(null, miningRewardAddress, this.miningReward),
+      new Transaction(
+        "  System-Provider",
+        miningRewardAddress,
+        this.miningReward
+      ),
     ];
 
     return newBlock;
@@ -124,6 +130,7 @@ export class Blockchain {
     if (!transaction.isValid()) {
       throw new Error("Cannot add invalid transaction to chain");
     }
+
     this.pendingTransactions.push(transaction);
   }
 

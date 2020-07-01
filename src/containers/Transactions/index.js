@@ -66,6 +66,7 @@ const Transactions = () => {
                 toAddress: selectValue,
                 amount,
               }}
+              setAmount={setAmount}
             />
           </div>
         </StyledAddTx>

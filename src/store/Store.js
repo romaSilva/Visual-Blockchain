@@ -149,8 +149,11 @@ const Store = (props) => {
           type: "SET_CRYPTOCURRENCY",
           payload: myCurrency,
         });
+
+        return true;
       }
     }
+    return false;
   };
 
   const mineNewBlock = async () => {

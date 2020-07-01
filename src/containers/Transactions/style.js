@@ -84,6 +84,11 @@ export const StyledPendingTx = styled.div`
   flex-direction: column;
   height: 80%;
 
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   article {
     color: #fff;
     font-weight: 300;

@@ -12,6 +12,7 @@ const Button = ({
   setInput,
   updatePendingTx,
   newTx,
+  setAmount,
 }) => {
   const { whatIsHappening } = useContext(GlobalContext);
 
@@ -30,7 +31,7 @@ const Button = ({
           }
 
           if (updatePendingTx) {
-            updatePendingTx(newTx);
+            updatePendingTx(newTx) && setAmount(0);
           }
         }
       }}

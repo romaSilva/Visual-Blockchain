@@ -43,7 +43,7 @@ export const StyledAddUser = styled.article`
 
   input {
     background-color: #40444b;
-    border: 0.8px solid #b2b2b2;
+    border: 0.8px solid #fff;
     border-radius: 5px;
     width: 300px;
     margin: 0 15px 0;
@@ -66,13 +66,18 @@ export const StyledAddUser = styled.article`
 `;
 
 export const StyledUsers = styled.article`
-  height: 90%;
+  height: 85%;
   margin-top: 20px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 
   span {
     width: 50%;

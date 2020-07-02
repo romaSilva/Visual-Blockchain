@@ -4,7 +4,13 @@ import GridHeader from "../GridHeader";
 import { StyledTransactionsInBlockContainer, StyledTxs } from "./style";
 
 const TransactionsInBlock = () => {
-  const { selectedBlock, blockchain, users } = useContext(GlobalContext);
+  const {
+    selectedBlock,
+    blockchain,
+    users,
+    updateSelectedTx,
+    selectedTx,
+  } = useContext(GlobalContext);
 
   return blockchain.length > 0 ? (
     <StyledTransactionsInBlockContainer>
@@ -12,7 +18,13 @@ const TransactionsInBlock = () => {
       <StyledTxs>
         {selectedBlock > 0 &&
           blockchain[selectedBlock].transactions.map((tx) => (
-            <div key={tx.timestamp}>
+            <div
+              key={tx.timestamp}
+              onClick={() => updateSelectedTx(tx.timestamp)}
+              style={{
+                color: selectedTx.timestamp === tx.timestamp ? "#ffb522" : null,
+              }}
+            >
               <span>{`From: ${
                 tx.fromAddress === "System-Provider"
                   ? "System-Provider"

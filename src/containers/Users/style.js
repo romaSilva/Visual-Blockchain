@@ -76,7 +76,15 @@ export const StyledUsers = styled.article`
 
   overflow-y: scroll;
   ::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+    margin-right: 3px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #2f3136;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #40444b;
   }
 
   span {

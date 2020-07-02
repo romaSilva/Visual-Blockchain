@@ -51,7 +51,7 @@ export const StyledAddTx = styled.div`
 
   input {
     background-color: #40444b;
-    border: 0.8px solid #b2b2b2;
+    border: 0.8px solid #fff;
     border-radius: 5px;
     width: 85px;
     margin: 0 15px 0;
@@ -83,10 +83,19 @@ export const StyledPendingTx = styled.div`
   align-items: center;
   flex-direction: column;
   height: 80%;
+  margin-top: 20px;
 
   overflow-y: scroll;
   ::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+    margin-right: 3px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #2f3136;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #40444b;
   }
 
   article {

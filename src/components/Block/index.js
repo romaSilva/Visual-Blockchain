@@ -5,9 +5,12 @@ import GlobalContext from "../../store/Context";
 import { ellipseString } from "../../utils/ellipseString";
 
 const Block = () => {
-  const { blockchain, selectedBlock, updateSelectedBlock } = useContext(
-    GlobalContext
-  );
+  const {
+    blockchain,
+    selectedBlock,
+    updateSelectedBlock,
+    updateSelectedTx,
+  } = useContext(GlobalContext);
 
   return (
     blockchain.length && (
@@ -15,6 +18,7 @@ const Block = () => {
         <IoIosArrowBack
           onClick={() => {
             updateSelectedBlock(selectedBlock - 1);
+            updateSelectedTx(0);
           }}
           style={{
             ...iconsStyle,
@@ -35,6 +39,7 @@ const Block = () => {
         <IoIosArrowForward
           onClick={() => {
             updateSelectedBlock(selectedBlock + 1);
+            updateSelectedTx(0);
           }}
           style={{
             ...iconsStyle,

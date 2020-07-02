@@ -17,6 +17,8 @@ const Store = (props) => {
     users: [],
     selectedUser: {},
 
+    selectedTx: {},
+
     cryptoCurrency: undefined,
     blockchain: [],
     selectedBlock: 0,
@@ -156,6 +158,24 @@ const Store = (props) => {
     return false;
   };
 
+  const updateSelectedTx = (timestamp) => {
+    if (timestamp) {
+      const mySelectedTx = state.blockchain[
+        state.selectedBlock
+      ].transactions.find((tx) => tx.timestamp === timestamp);
+
+      dispatch({
+        type: "SET_SELECTEDTX",
+        payload: mySelectedTx,
+      });
+    } else {
+      dispatch({
+        type: "SET_SELECTEDTX",
+        payload: {},
+      });
+    }
+  };
+
   const mineNewBlock = async () => {
     const newBlock = await state.cryptoCurrency.minePendingTransactions(
       state.selectedUser.publicKey
@@ -198,6 +218,7 @@ const Store = (props) => {
         latestBlock: state.latestBlock,
         newBlock: state.newBlock,
         selectedUser: state.selectedUser,
+        selectedTx: state.selectedTx,
         initUsers,
         updateWhatIsHappening,
         updateMinedModal,
@@ -210,6 +231,7 @@ const Store = (props) => {
         updateSelectedUser,
         updatePendingTx,
         mineNewBlock,
+        updateSelectedTx,
       }}
     >
       {props.children}

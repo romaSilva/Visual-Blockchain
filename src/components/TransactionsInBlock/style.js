@@ -9,15 +9,24 @@ export const StyledTransactionsInBlockContainer = styled.div`
 `;
 
 export const StyledTxs = styled.div`
-  margin: 10px 0;
+  margin: 30px 0;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80%;
+  height: 450px;
   overflow-y: scroll;
+
   ::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+    margin-right: 3px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #2f3136;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #40444b;
   }
 
   div {
@@ -32,6 +41,10 @@ export const StyledTxs = styled.div`
 
     &:last-child {
       border: none;
+    }
+    &:hover {
+      background-color: #4c515b;
+      cursor: pointer;
     }
 
     span {

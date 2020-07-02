@@ -50,6 +50,11 @@ export default (state, action) => {
         ...state,
         selectedUser: action.payload,
       };
+    case "SET_SELECTEDTX":
+      return {
+        ...state,
+        selectedTx: action.payload,
+      };
 
     default:
       return state;

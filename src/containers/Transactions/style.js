@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledTransactionsContainer = styled.div`
   height: 90%;
-  margin: 10px 10px 0;
+  margin: 10px 0 0;
 
   section {
     background-color: #40444b;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledSideMenuContainer = styled.div`
-  width: 250px;
+  width: 246px;
   max-height: 100vh;
   height: 100%;
 

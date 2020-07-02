@@ -77,7 +77,7 @@ const Transactions = () => {
           {cryptoCurrency.pendingTransactions.map(
             (tx) =>
               tx.toAddress && (
-                <article>
+                <article key={tx.timestamp}>
                   <span>From: {ellipseString(tx.fromAddress, 17)}</span>
                   <span>To: {ellipseString(tx.toAddress, 17)}</span>
                   <span>Amount: {tx.amount}</span>

@@ -113,7 +113,7 @@ export class Blockchain {
 
     this.pendingTransactions = [
       new Transaction(
-        "  System-Provider",
+        "System-Provider",
         miningRewardAddress,
         this.miningReward
       ),

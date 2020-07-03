@@ -30,7 +30,7 @@ const SideMenu = () => {
 
       <Link
         style={{ textDecoration: "none", margin: "10px" }}
-        to={whatIsHappening !== "mining" ? "/blockchain" : "/mining"}
+        to={whatIsHappening !== "mining" ? "/" : "/mining"}
       >
         <button
           style={{

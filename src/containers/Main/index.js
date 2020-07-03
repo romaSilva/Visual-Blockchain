@@ -10,7 +10,7 @@ const Main = () => {
   return (
     <StyledMainContainer>
       <Switch>
-        <Route exact path="/blockchain" component={Blockchain}></Route>
+        <Route exact path="/" component={Blockchain}></Route>
         <Route exact path="/users" component={Users}></Route>
         <Route exact path="/transactions" component={Transactions}></Route>
         <Route exact path="/mining" component={Mining}></Route>

@@ -59,7 +59,7 @@ Em Mining o usuário pode simular o ato de minerar um novo bloco, cumprindo um p
 
 ### ou:
 
-- [https://sorting-visual.herokuapp.com/](https://sorting-visual.herokuapp.com/)
+- [https://visual-blockchain.herokuapp.com/](https://visual-blockchain.herokuapp.com/)
 
 ## ♻️ Como contribuir
 

@@ -25,7 +25,7 @@ const Mining = () => {
   useEffect(() => {
     updateTab("mining");
     updateLatestBlock();
-  }, [cryptoCurrency]);
+  }, [cryptoCurrency]); //eslint-disable-line react-hooks/exhaustive-deps
 
   return blockchain ? (
     <>

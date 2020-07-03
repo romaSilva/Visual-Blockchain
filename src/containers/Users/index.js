@@ -23,7 +23,7 @@ const Users = () => {
 
   useEffect(() => {
     updateTab("users");
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <StyledUsersContainer>

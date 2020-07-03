@@ -1,68 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+Sorting Visualizer</h1>
 
-## Available Scripts
+<p align="center">
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-usar">Como Usar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-contribuir">Como contribuir</a>
+</p>
 
-In the project directory, you can run:
+<p align="center">
+  <img alt="Frontend" src=".github/blockchain.JPG" width="80%">
+</p>
+<p align="center">
+  <img alt="Frontend" src=".github/users.JPG" width="80%">
+</p>
+<p align="center">
+  <img alt="Frontend" src=".github/transactions.JPG" width="80%">
+</p>
+<p align="center">
+  <img alt="Frontend" src=".github/mining.JPG" width="80%">
+</p>
 
-### `yarn start`
+## 🚀 Tecnologias
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- [ReactJs](https://reactjs.org/) (_Flux_ _Pattern_)
+- JavaScript
+- HTML5
+- CSS
 
-### `yarn test`
+## 💻 Projeto
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O projeto consiste em uma aplicação que simula algumas das funcionalidades essenciais na tecnologia de blockchain aplicada a criptomoedas. O modelo para a implementação do blockchain é baseado nas aulas oferecidas por [Xavier Decuyper](https://www.youtube.com/channel/UCnxrdFPXJMeHru_b4Q_vTPQ/featured).
 
-### `yarn build`
+#### Blockchain
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Na aba Blockchain o usuário pode visualizar os blocos que constituem o blockchain, incluindo todas as transações contidas em cada bloco.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### Users
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Na aba Users o usuário pode criar carteiras digitando um nickname que gerará automaticamente um endereço público ao qual as transações podem ser direcionadas. É tambem possível verificar o crédito de cada carteira. Tal crédito é consequência da análise de todas as transações contidas no blockchain até o momento.
 
-### `yarn eject`
+#### Transactions
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Em Transactions é possível assinar transações entre usuários que serão adicionadas ao próximo bloco a ser minerado. Cada transação contem uma assinatura única que a identifica, de acordo com o endereço da carteira que envia a quantia e os demais detalhes da transação.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Mining
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Em Mining o usuário pode simular o ato de minerar um novo bloco, cumprindo um proof-of-work para a criação da nova hash. Ao minerar o bloco o usuário recebe uma recompensa.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 🔥 Como usar
 
-## Learn More
+- É necessário ter o [Node.js](https://nodejs.org/en/) e [npm](https://www.npmjs.com/) instalados
+- Clone esse repositório: `https://github.com/romaSilva/Visual-Blockchain.git`
+- Instale as dependências do projeto, digitando no terminal: `npm install`
+- Enfim, para rodar a aplicação digite: `npm start`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### ou:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [https://sorting-visual.herokuapp.com/](https://sorting-visual.herokuapp.com/)
 
-### Code Splitting
+## ♻️ Como contribuir
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Faça um fork desse repositório;
+- Cria uma branch com a sua feature: `git checkout -b minha-feature`;
+- Faça commit das suas alterações: `git commit -m 'feat: Minha nova feature'`;
+- Faça push para a sua branch: `git push origin minha-feature`.
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Depois que o merge da sua pull request for feito, você pode deletar a sua branch.

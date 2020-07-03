@@ -14,7 +14,7 @@ const Blockchain = () => {
     console.log("Blockchain tab mounted");
     updateTab("blockchain");
     updateBlockchain();
-  }, [cryptoCurrency]);
+  }, [cryptoCurrency]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <StyledBlockchainContainer>

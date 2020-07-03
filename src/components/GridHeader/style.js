@@ -15,4 +15,19 @@ export const StyledGridHeaderContainer = styled.div`
     width: 100%;
     text-align: left;
   }
+
+  div {
+    padding-top: 4px;
+    margin-right: 7px;
+    position: relative;
+
+    &:hover::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      right: 100%;
+      width: content;
+      background-color: black;
+      border-radius: 5px;
+    }
+  }
 `;

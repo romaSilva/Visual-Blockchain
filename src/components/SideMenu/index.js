@@ -22,7 +22,7 @@ const SideMenu = () => {
     console.log("SideMenu mounted");
     initUsers();
     updateCryptoCurrency();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <StyledSideMenuContainer whatIsHappening={whatIsHappening}>

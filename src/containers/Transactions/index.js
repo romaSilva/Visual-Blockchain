@@ -23,7 +23,7 @@ const Transactions = () => {
 
   useEffect(() => {
     updateTab("transactions");
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return cryptoCurrency ? (
     <StyledTransactionsContainer>

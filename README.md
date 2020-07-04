@@ -1,5 +1,5 @@
 <h1 align="center">
-Sorting Visualizer</h1>
+Visual Blockchain</h1>
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
